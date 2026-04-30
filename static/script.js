@@ -6,6 +6,23 @@ document.addEventListener('DOMContentLoaded', () => {
         revealItems.forEach(item => item.classList.add('active'));
     }, 100);
 
+    // --- MOBILE MENU TOGGLE ---
+    const mobileMenu = document.getElementById('mobile-menu');
+    const navLinks = document.getElementById('nav-links');
+    const navItems = document.querySelectorAll('.nav-link');
+
+    if (mobileMenu) {
+        mobileMenu.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    }
+
     // --- NAVBAR SCROLL EFFECT ---
     const navbar = document.querySelector('.navbar');
     window.addEventListener('scroll', () => {
