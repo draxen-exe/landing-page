@@ -14,6 +14,7 @@ app = Flask(__name__)
 # Fetch Telegram credentials from environment variables
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHAT_ID = os.getenv('TELEGRAM_CHAT_ID')
+TELEGRAM_TOPIC_ID = os.getenv('TELEGRAM_TOPIC_ID')
 
 # Temporary in-memory counter since JSON storage is removed
 in_memory_visits = 0
@@ -31,6 +32,10 @@ def send_telegram_message(text):
         "parse_mode": "HTML"
     }
     
+    # If a topic ID is provided, route the message to that specific thread
+    if TELEGRAM_TOPIC_ID:
+        payload["message_thread_id"] = TELEGRAM_TOPIC_ID
+        
     try:
         response = requests.post(url, json=payload, timeout=5)
         if response.status_code != 200:
