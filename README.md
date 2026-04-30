@@ -28,8 +28,8 @@ A high-performance, futuristic portfolio landing page designed for the modern we
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/yourusername/draxen-portfolio.git
-   cd draxen-portfolio
+   git clone https://github.com/draxen-exe/landing-page
+   cd landing-page
    ```
 
 2. **Install Python Dependencies:**
