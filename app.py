@@ -9,7 +9,7 @@ try:
 except ImportError:
     pass
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='templates')
 
 # Fetch Telegram credentials from environment variables
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
@@ -88,7 +88,3 @@ def contact():
     else:
         return jsonify({'success': False, 'message': 'Telegram API Error ❌'}), 500
 
-if __name__ == '__main__':
-    print("Initializing Draxen.exe Backend Server...")
-    print(f"Telegram Integration: {'🟢 ACTIVE' if TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID else '🔴 INACTIVE (Set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in .env)'}")
-    app.run(debug=True, port=5000)
